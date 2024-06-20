@@ -70,12 +70,21 @@ O servidor estará disponível em `http://localhost:3000` por padrão.
 ### Mudança de Permissões (ADMIN)
 
 - **Método:** PUT
-- **Endpoint:** `/user/permissions/:userId`
+- **Endpoint:** `/admin/user/permission/:userId`
 - **Acesso:** Autenticada para administradores
 - **Descrição:** Atualiza as permissões de um usuário específico.
 - **Status de Retorno:**
   - 201 Created: Permissões atualizadas com sucesso.
   - 400 Bad Request: Erro de validação ou permissões inválidas.
+ 
+  - ### Deletar Usuário (ADMIN)
+
+- **Método:** DELETE
+- **Endpoint:** `admin/user/:userId`
+- **Acesso:** Autenticada
+- **Descrição:** Deleta o usuário do id especificado.
+- **Status de Retorno:**
+  - 200 OK
 
 ### Ver Perfil do Usuário
 
@@ -83,6 +92,33 @@ O servidor estará disponível em `http://localhost:3000` por padrão.
 - **Endpoint:** `/user`
 - **Acesso:** Autenticada
 - **Descrição:** Retorna o perfil do usuário autenticado.
+- **Status de Retorno:**
+  - 200 OK: Retorna um objeto JSON com informações do usuário (id, nome, login, permissions).
+ 
+  - ### Criar Produto (MANAGER)
+
+- **Método:** POST
+- **Endpoint:** `/manager/product`
+- **Acesso:** Autenticada
+- **Descrição:** Cria um produto (não precisa de um body correto por enquanto, pode passar o que quiser)
+- **Status de Retorno:**
+  - 200 OK: Retorna um objeto JSON com informações do usuário (id, nome, login, permissions).
+ 
+  - ### Ver infos sobre venda (SELLER)
+
+- **Método:** GET
+- **Endpoint:** `/seller/product/:productId`
+- **Acesso:** Autenticada
+- **Descrição:** retorna informações sobre a venda de um produto
+- **Status de Retorno:**
+  - 200 OK: Retorna um objeto JSON com informações do usuário (id, nome, login, permissions).
+ 
+   - ### Ver todos os produtos (CUSTOMER)
+
+- **Método:** GET
+- **Endpoint:** `/customer/products`
+- **Acesso:** Autenticada
+- **Descrição:** retorna informações sobre a venda de um produto
 - **Status de Retorno:**
   - 200 OK: Retorna um objeto JSON com informações do usuário (id, nome, login, permissions).
 
