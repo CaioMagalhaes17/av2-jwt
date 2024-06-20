@@ -1,10 +1,9 @@
 import { JwtService } from "@nestjs/jwt";
 import { LoginPayloadDTO } from "./dto/login-payload.dto";
-import { HttpException, Injectable } from "@nestjs/common";
+import {  Injectable } from "@nestjs/common";
 import { JwtPayloadDTO } from "./dto/jwt-payload.dto";
 import { UserRepository } from "src/database/repositories/user.repository";
 import { User } from "src/database/models/user.model";
-import { permission } from "process";
 
 @Injectable()
 export class AuthService {

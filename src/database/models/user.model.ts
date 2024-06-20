@@ -1,4 +1,5 @@
 import { Model, Table, Column, PrimaryKey, AutoIncrement } from "sequelize-typescript";
+import { possiblePermissions } from "src/constants/permissions";
 
 @Table({
   tableName: 'users',
@@ -22,5 +23,8 @@ export class User extends Model {
   password: string
 
   @Column
-  permissions: 'ADMIN' | 'MANAGER' | 'USUARIO'
+  email: string
+
+  @Column
+  permissions: possiblePermissions
 }

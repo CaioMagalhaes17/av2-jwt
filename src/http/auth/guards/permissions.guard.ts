@@ -1,13 +1,14 @@
 import { Injectable, CanActivate, ExecutionContext, ForbiddenException } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { JwtService } from '@nestjs/jwt';
+import { possiblePermissions } from 'src/constants/permissions';
 
 @Injectable()
 export class PermissionsGuard implements CanActivate {
   constructor(private reflector: Reflector, private jwtService: JwtService) {}
 
   canActivate(context: ExecutionContext): boolean {
-    const validPermission = this.reflector.get<'ADMIN'|'MANAGER'|'USUARIO'>('permissions', context.getHandler());
+    const validPermission = this.reflector.get<possiblePermissions>('permissions', context.getHandler());
     if (!validPermission) {
       return true;
     }

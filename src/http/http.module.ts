@@ -4,17 +4,13 @@ import { UserRepository } from "src/database/repositories/user.repository";
 import { PermissionsGuard } from "./auth/guards/permissions.guard";
 import { JwtStrategy } from "./auth/strategies/jwt-strategy";
 import { UserController } from "./controllers/user.controller";
-import { JwtModule } from "@nestjs/jwt";
 import { UserService } from "src/services/user.service";
+import { ProductsController } from "./controllers/products.controller";
+import { ProductsService } from "src/services/products.service";
 
 @Module({
-  imports:[
-    AuthModule,
-    JwtModule.register({
-    secret: 'asdasd',
-    signOptions: { expiresIn: '10min' },
-  })],
-  controllers: [UserController],
-  providers: [UserService, JwtStrategy, PermissionsGuard, UserRepository],
+  imports: [AuthModule],
+  controllers: [UserController, ProductsController],
+  providers: [UserService, ProductsService, JwtStrategy, PermissionsGuard, UserRepository],
 })
 export class HttpModule {}

@@ -11,11 +11,12 @@ import { UserRepository } from "src/database/repositories/user.repository";
   imports: [
     JwtModule.register({
       secret: 'asdasd',
-      signOptions: { expiresIn: '10min' },
+      signOptions: { expiresIn: '30min' },
     })
   ],
   controllers: [AuthController],
   providers: [AuthService, LocalStrategy, JwtStrategy, PermissionsGuard, UserRepository],
+  exports: [JwtModule, JwtStrategy, PermissionsGuard]
 })
 
 export class AuthModule {}

@@ -1,7 +1,5 @@
-import { permission } from "process";
 import { User } from "../models/user.model";
-import { HttpException } from "@nestjs/common";
-import { PermissionsDTO } from "src/http/auth/dto/permissions.dto";
+import { possiblePermissions } from "src/constants/permissions";
 
 export class UserRepository {
   constructor(private userModel: User){}
@@ -23,9 +21,9 @@ export class UserRepository {
     return result
   }
 
-  async changePermissions(userId: string, changePermissionData: PermissionsDTO){
+  async changePermissions(userId: string, permission: possiblePermissions){
     if (await this.getUserById(userId)) {
-      const result = await User.update({permissions: changePermissionData.permissions}, {
+      const result = await User.update({permissions: permission}, {
         where: {id: userId},
         returning: true
       })
@@ -37,6 +35,15 @@ export class UserRepository {
   async getAdmins(){
     const result = await User.findAll({
       where: {permissions: 'ADMIN'}
+    })
+    return result
+  }
+
+  async deleteUser(userId: string){
+    const result = await User.destroy({
+      where: {
+        id: userId
+      }
     })
     return result
   }

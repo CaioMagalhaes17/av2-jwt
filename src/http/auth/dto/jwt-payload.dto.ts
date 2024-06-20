@@ -1,7 +1,9 @@
+import { possiblePermissions } from "src/constants/permissions"
+
 export class JwtPayloadDTO {
   id: number
   name: string
   login: string
-  permissions: 'ADMIN' | 'MANAGER' | 'USUARIO'
+  permissions: possiblePermissions
   password?: string
 }

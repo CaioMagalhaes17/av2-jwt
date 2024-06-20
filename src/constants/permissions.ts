@@ -1,0 +1,1 @@
+export type possiblePermissions = 'ADMIN' | 'MANAGER' | 'SELLER' | 'CUSTOMER'
