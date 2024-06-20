@@ -1,5 +1,7 @@
 # API de Autenticação com NestJS
 
+(NÃO CONSEGUI FAZER O DIAGRAMA)
+
 Esta é uma API de autenticação desenvolvida em NestJS que utiliza MySQL como banco de dados. Siga as instruções abaixo para configurar e rodar o projeto.
 
 ## Configuração do Ambiente
