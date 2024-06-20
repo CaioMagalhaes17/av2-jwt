@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { Permissions } from "../auth/decorators/permissions.decorator";
 import { JwtAuthGuard } from "../auth/guards/jwt.guard";
 import { PermissionsGuard } from "../auth/guards/permissions.guard";
@@ -19,7 +19,7 @@ export class ProductsController {
 
   @UseGuards(JwtAuthGuard, PermissionsGuard)
   @Permissions('SELLER')
-  @Post('/manager/product/:productId')
+  @Get('/seller/product/:productId')
   async getProductSelledAnalytics(@Param() productId: number) {
     return await this.productsService.getProductSelledAnalytics(productId)
     //const response = await this.productsService
@@ -27,7 +27,7 @@ export class ProductsController {
 
   @UseGuards(JwtAuthGuard, PermissionsGuard)
   @Permissions('CUSTOMER')
-  @Post('/customer/products')
+  @Get('/customer/products')
   async getCustomerEndpoint() {
     return await this.productsService.getProducts()
     //const response = await this.productsService

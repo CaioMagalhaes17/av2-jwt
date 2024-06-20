@@ -32,7 +32,7 @@ export class UserController {
 
   @UseGuards(JwtAuthGuard, PermissionsGuard)
   @Permissions('ADMIN')
-  @Delete('/admin/users/:userId')
+  @Delete('/admin/user/:userId')
   async deleteUsers(@Param('userId') userId: string){
     const response = await this.userService.deleteUser(userId)
     return response
